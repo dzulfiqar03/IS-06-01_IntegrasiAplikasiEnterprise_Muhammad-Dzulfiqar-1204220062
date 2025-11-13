@@ -22,6 +22,7 @@ class BookSeeder extends Seeder
                 'pengarang' => $faker->name, // nama pengarang random
                 'penerbit' => $faker->company, // nama penerbit random
                 'tahun_terbit' => $faker->year, // tahun terbit random
+                'kategori' => $faker->randomElement(['Fiksi', 'NonFiksi', 'Komik', 'Olahraga', 'Kesehatan']),
                 'jumlah_halaman' => $faker->numberBetween(100, 500), // halaman antara 100-500
                 'isbn' => $faker->unique()->numerify('############'), // 12 digit angka
                 'status' => $faker->randomElement(['tersedia', 'dipinjam']), // status acak

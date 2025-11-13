@@ -61,7 +61,7 @@ class BookController extends Controller
             'success' => true,
             'message' => 'Buku berhasil dibuat',
             'data' => Book::latest()->get()
-        ], 201);
+        ], 200);
     }
 
     /**
@@ -97,6 +97,24 @@ class BookController extends Controller
      */
     public function update(Request $request, String $id)
     {
+         $validator = Validator::make($request->all(), [
+            'judul'        => 'required|string|max:255',
+            'pengarang' => 'nullable|string',
+            'penerbit' => 'nullable|string',
+            'tahun_terbit'  => 'required|numeric|min:0',
+            'jumlah_halaman' => 'required|integer|min:0',
+            'kategori'    => 'nullable|string|max:100',
+            'isbn'       => 'required|integer|min:0',
+            'status'    => 'nullable|string|max:100',
+        ]);
+
+        if ($validator->fails()) {
+            return response()->json([
+                'success' => false,
+                'message' => 'Validation Error',
+                'errors' => $validator->errors()
+            ], 422);
+        };
         $book = Book::find($id);
         $book->update($request->all());
         return response()->json([
@@ -105,6 +123,7 @@ class BookController extends Controller
             'data' => $book
         ],200);
     }
+
     public function destroy(String $id)
     {
         $book = Book::find($id);

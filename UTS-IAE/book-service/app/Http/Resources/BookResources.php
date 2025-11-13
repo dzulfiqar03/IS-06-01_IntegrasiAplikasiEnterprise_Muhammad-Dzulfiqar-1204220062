@@ -21,6 +21,7 @@ class BookResources extends JsonResource
             'penerbit' => $this->penerbit,
             'tahun_terbit' => $this->tahun_terbit,
             'jumlah_halaman' => $this->jumlah_halaman,
+            'kategori' => $this->kategori,
             'isbn' => $this->isbn,
             'status' => $this->status,
             'created_at' => $this->created_at->format('Y-m-d H:i:s'),

@@ -136,6 +136,17 @@
                                     placeholder="300" min="1" required>
                             </div>
 
+                            <div class="flex flex-col col-span-1">
+                                <label for="kategori" class="text-sm font-medium text-gray-700">Kategori</label>
+                                <select name="kategori" id="kategori"
+                                    class="border rounded-md p-2 focus:ring-2 focus:ring-green-500 focus:outline-none" required>
+                                    <option value="" selected>Pilih Kategori</option>
+                                    <option value="Fiksi">Fiksi</option>
+                                    <option value="NonFiksi">Non Fiksi</option>
+                                    <option value="fantasi">Fantasi</option>
+                                </select>
+                            </div>
+
                             <div class="flex flex-col">
                                 <label for="isbn" class="text-sm font-medium text-gray-700">ISBN</label>
                                 <input type="text" name="isbn" id="isbn"
@@ -182,6 +193,7 @@
                         <th>Penerbit</th>
                         <th>Tahun Terbit</th>
                         <th>Jumlah Halaman</th>
+                        <th>Kategori</th>
                         <th>ISBN</th>
                         <th>Status</th>
                         <th>Aksi</th>
@@ -197,6 +209,7 @@
                             <td><?= esc($book['penerbit']); ?></td>
                             <td><?= esc($book['tahun_terbit']); ?></td>
                             <td><?= esc($book['jumlah_halaman']); ?></td>
+                            <td><?= esc($book['kategori']); ?></td>
                             <td><?= esc($book['isbn']); ?></td>
                             <td><?= esc($book['status']); ?></td>
                             <td class="flex gap-5">
@@ -206,6 +219,7 @@
                                     data-pengarang="<?= esc($book['pengarang']); ?>"
                                     data-penerbit="<?= esc($book['penerbit']); ?>"
                                     data-tahun_terbit="<?= esc($book['tahun_terbit']); ?>"
+                                    data-kategori="<?= esc($book['kategori']); ?>"
                                     data-jumlah_halaman="<?= esc($book['jumlah_halaman']); ?>"
                                     data-isbn="<?= esc($book['isbn']); ?>"
                                     data-status="<?= esc($book['status']); ?>"
@@ -271,6 +285,7 @@
                 $('#form_book input[name="pengarang"]').val("");
                 $('#form_book input[name="penerbit"]').val("");
                 $('#form_book input[name="tahun_terbit"]').val("");
+                $('#form_book input[name="kategori"]').val("");
                 $('#form_book input[name="jumlah_halaman"]').val("");
                 $('#form_book input[name="isbn"]').val("");
                 $('#form_book select[name="status"]').val("");
@@ -412,6 +427,7 @@
                 $('#form_book input[name=penerbit]').val(data.penerbit);
                 $('#form_book input[name=tahun_terbit]').val(data.tahun_terbit);
                 $('#form_book input[name=jumlah_halaman]').val(data.jumlah_halaman);
+                $('#form_book select[name=kategori]').val(data.kategori);
                 $('#form_book input[name=isbn]').val(data.isbn);
                 $('#form_book select[name=status]').val(data.status);
 
